@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class SignUp extends StatefulWidget {
   @override
@@ -6,7 +7,6 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-
   Container buildTitle(ThemeData theme) {
     return Container(
       padding: const EdgeInsets.only(bottom: 8.0),
@@ -18,6 +18,45 @@ class _SignUpState extends State<SignUp> {
       ),
     );
   }
+
+  SizedBox buildFacebookBtn() {
+    return SizedBox(
+      width: 250.0,
+      child: FlatButton(
+        padding: const EdgeInsets.symmetric(vertical: 12.0),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+        color: Color(0xFF486198),
+        onPressed: () {},
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              MdiIcons.facebook,
+              size: 16.0,
+            ),
+            SizedBox(
+              width: 8.0,
+            ),
+            Text('Sign up with Facebook'),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Padding buildText(ThemeData theme, String text) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Text(
+        text,
+        style: TextStyle(
+          color: theme.primaryColorDark,
+          fontSize: 12.0,
+        ),
+      ),
+    );
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +72,13 @@ class _SignUpState extends State<SignUp> {
               color: theme.primaryColor,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
-                children: [buildTitle(theme)],
+                children: [
+                  buildTitle(theme),
+                  buildFacebookBtn(),
+                  buildText(theme,'or'),
+                  buildText(theme,'Sign up with your email address'),
+
+                ],
               ),
             ),
           ),
@@ -41,4 +86,5 @@ class _SignUpState extends State<SignUp> {
       ],
     ));
   }
+
 }
